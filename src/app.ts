@@ -4,11 +4,11 @@ import * as ElementUI from 'element-ui'
 import * as Vue from 'vue'
 Vue.use(ElementUI)
 
-  const api: any = require('vue-hot-reload-api')
+  // const api: any = require('vue-hot-reload-api')
 
   // make the API aware of the Vue that you are using.
   // also checks compatibility.
-  Vue.use(api)
+  // Vue.use(api)
 
 
 import sideBar from './components/sidebar'

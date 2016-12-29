@@ -12,7 +12,7 @@ var sidebar =  vivio.component()
     .elMenu
       .h1.class(h1)
         .span.style({color: '#2aa198'}).$`Vue`.span()
-        .$`Awesome`
+        .$`awesome`
       .h1()
       .elMenuItem.props({index: '0'}).$`Official Resources`.elMenuItem()
       .elMenuItem.props({index: '1'}).$`External Resources`.elMenuItem()
@@ -24,15 +24,15 @@ var sidebar =  vivio.component()
 // https://webpack.github.io/docs/hot-module-replacement.html
 if (module.hot) {
 
+	  var hotAPI: any = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
 	  module.hot.accept()
-    console.log('eeeewewewewe')
-	  // var hotAPI: any = require("vue-hot-reload-api")
-	  // hotAPI.install(require("vue"), false)
-	  // if (!module.hot.data) {
-	  //   hotAPI.createRecord("[hot-module-hash]", sidebar)
-	  // } else {
-	  //   hotAPI.reload("[hot-module-hash]", sidebar)
-	  // }
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("[hot-module-hash]", sidebar)
+	  } else {
+	    hotAPI.reload("[hot-module-hash]", sidebar)
+	    hotAPI.rerender("[hot-module-hash]", sidebar)
+	  }
 }
 
 export default sidebar

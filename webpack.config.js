@@ -1,6 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
 
+const ON_PROD = process.env.NODE_ENV === 'production'
+
 module.exports = {
   entry: './src/app.ts',
   output: {
@@ -14,7 +16,7 @@ module.exports = {
 
   module: {
       rules: [
-          { test: /\.ts$/, use: 'ts-loader' },
+          { test: /\.ts$/, use: {loader: 'ts-loader', options: {transpileOnly: !ON_PROD}} },
           { test: /\.css/, use: ['style-loader', 'css-loader'] },
           {
             test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
@@ -32,7 +34,7 @@ module.exports = {
 }
 
 
-if (process.env.NODE_ENV === 'production') {
+if (ON_PROD) {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
