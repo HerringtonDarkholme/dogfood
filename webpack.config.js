@@ -9,12 +9,17 @@ module.exports = {
     filename: 'build.js'
   },
   resolve: {
-      extensions: ['.ts', '.js'],
+      extensions: ['.js', '.ts'],
   },
 
   module: {
       rules: [
-          { test: /\.ts$/, use: 'ts-loader' }
+          { test: /\.ts$/, use: 'ts-loader' },
+          { test: /\.css/, use: ['style-loader', 'css-loader'] },
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+            loader: 'file-loader',
+          },
       ],
   },
   devServer: {
