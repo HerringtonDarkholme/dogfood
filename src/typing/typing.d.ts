@@ -21,6 +21,16 @@ declare module "vivio/dist/src/template/interface" {
           props: {
             index: string
           }
+        },
+        elInput: {
+          props: {
+            type?: string
+            value?: string | number
+            placeholder?: string
+          },
+          $slots: {
+            append: any[]
+          }
         }
     }
 }

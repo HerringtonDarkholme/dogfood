@@ -3,7 +3,8 @@ import {style} from 'typestyle'
 
 const h1 = style({
   fontFamily: '"Droid Serif",Georgia,"Times New Roman",Times,serif',
-  textAlign: 'center'
+  textAlign: 'center',
+  fontSize: 24
 })
 
 

@@ -8,7 +8,7 @@ const font = style({
 })
 
 export default
-vivio.component()
+vivio.component(module)
 .components({sideBar, mainPanel})
 .render(h => h
   .div`.${font}`
