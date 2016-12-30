@@ -9,7 +9,7 @@
   "dependencies": {
     "element-ui": "^1.0.9",
     "typestyle": "^0.22.1",
-    "vivio": "^0.0.6"
+    "vivio": "^0.0.7"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.12.1",

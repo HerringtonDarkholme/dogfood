@@ -24,3 +24,4 @@ declare module "vivio/dist/src/template/interface" {
         }
     }
 }
+declare module 'element-ui'
