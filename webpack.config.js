@@ -24,11 +24,12 @@ module.exports = {
           },
       ],
   },
+  performance: {
+    hints: false
+  },
   devServer: {
-    port: 8080,
-    host: 'localhost',
     historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 }
+    noInfo: true
   },
   devtool: '#cheap-eval-source-map'
 }

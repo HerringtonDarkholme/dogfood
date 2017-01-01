@@ -31,7 +31,19 @@ declare module "vivio/dist/src/template/interface" {
           $slots: {
             append: any[]
           }
+        },
+        elCard: {
+          props: {
+            header?: string
+          }
+        },
+        elSlider: {
+          props: {
+            min?: number
+            max?: number
+            disabled?: boolean
+            step?: number
+          }
         }
     }
 }
-declare module 'element-ui'
