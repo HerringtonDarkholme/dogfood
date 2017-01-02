@@ -11,7 +11,8 @@ export default
 vivio.component(module)
 .components({sideBar, mainPanel})
 .render(h => h
-  .div`.${font}`
+  .div.class(font)
+  .elRow.elRow()
   .elRow.props({gutter: 10, justify: 'center', type: 'flex'})
     .elCol.props({span: 4})
       .sideBar.sideBar()

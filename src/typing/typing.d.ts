@@ -27,6 +27,8 @@ declare module "vivio/dist/src/template/interface" {
             type?: string
             value?: string | number
             placeholder?: string
+            icon?: string
+            size?: 'large' | 'small' | 'mini'
           },
           $slots: {
             append: any[]
@@ -35,6 +37,9 @@ declare module "vivio/dist/src/template/interface" {
         elCard: {
           props: {
             header?: string
+          },
+          $slots: {
+            header: any[]
           }
         },
         elSlider: {
@@ -44,6 +49,8 @@ declare module "vivio/dist/src/template/interface" {
             disabled?: boolean
             step?: number
           }
+        },
+        elTag: {
         }
     }
 }
