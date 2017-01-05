@@ -16,7 +16,16 @@ module.exports = {
 
   module: {
       rules: [
-          { test: /\.ts$/, use: {loader: 'ts-loader', options: {transpileOnly: !ON_PROD}} },
+          { test: /\.ts$/, use: {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: !ON_PROD,
+              compilerOptions: {
+                target: ON_PROD ? 'es5' : 'es6',
+                lib: ['es5', 'dom', 'es6']
+              }
+            }
+          } },
           { test: /\.css/, use: ['style-loader', 'css-loader'] },
           {
             test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
