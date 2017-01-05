@@ -1,6 +1,6 @@
-import vivio from 'vivio'
+import vivio, {html} from 'vivio'
 import {style} from 'typestyle'
-import {mapGetters} from './helper'
+import {mapGetters, mapMutations} from './helper'
 
 const h1 = style({
   fontFamily: '"Droid Serif",Georgia,"Times New Roman",Times,serif',
@@ -12,14 +12,16 @@ const h1 = style({
 export default
 vivio.component(module)
   .computed(mapGetters('categories'))
+  .methods(mapMutations('changeCategory'))
   .render((h, vm) => h
     .elMenu
       .h1.class(h1)
         .span.style({color: '#2aa198'}).$`Vue`.span()
         .$`Awesome`
       .h1()
-      .for(vm.categories, (h, category, i) => h
-        .elMenuItem.props({index: '' + i}).$(category).elMenuItem()
+      .elMenuItem.props({index: '-1'}).nativeOn({click: () => vm.changeCategory('All')}).$`All`.elMenuItem()
+      .for(vm.categories, (h, category, index) => h
+        .elMenuItem.props({index: '' + index}).nativeOn({click: () => vm.changeCategory(category)}).$(category).elMenuItem()
       )
     .elMenu()
   )

@@ -9,7 +9,7 @@ interface Repo {
 
 const data = {
   repos: require<Repo[]>('../data.json'),
-  currentCategory: '',
+  currentCategory: 'All',
   searchString: '',
 }
 
@@ -21,7 +21,7 @@ export default vivio.store(data)
       return Array.from(new Set(duplicate))
     },
     currentItems(state) {
-      if (!state.currentCategory) return state.repos.slice(0, 20)
+      if (state.currentCategory === 'All') return state.repos.slice(0, 20)
       return state.repos.filter(repo => repo.category === state.currentCategory)
     }
   })

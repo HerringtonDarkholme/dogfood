@@ -51,6 +51,9 @@ declare module "vivio/dist/src/template/interface" {
           }
         },
         elTag: {
+          props: {
+            type: string
+          }
         }
     }
 }
