@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/app.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: ON_PROD ? '/dogfood/dist/' : '/dist/',
     filename: 'build.js'
   },
   resolve: {
