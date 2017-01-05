@@ -5,7 +5,7 @@ import {mapGetters, mapMutations} from './helper'
 const h1 = style({
   fontFamily: '"Droid Serif",Georgia,"Times New Roman",Times,serif',
   textAlign: 'center',
-  fontSize: 24
+  fontSize: 30
 })
 
 
@@ -16,8 +16,8 @@ vivio.component(module)
   .render((h, vm) => h
     .elMenu
       .h1.class(h1)
-        .span.style({color: '#2aa198'}).$`Vue`.span()
-        .$`Awesome`
+        .span.style({color: '#2aa198', marginRight: '-0.2em'}).$`Vue`.span()
+        .$` Awesome`
       .h1()
       .elMenuItem.props({index: '-1'}).nativeOn({click: () => vm.changeCategory('All')}).$`All`.elMenuItem()
       .for(vm.categories, (h, category, index) => h

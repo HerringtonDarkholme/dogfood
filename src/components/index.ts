@@ -17,6 +17,9 @@ const font = style({
         }
       }
     },
+    h4: {
+      margin: 0
+    }
   }
 })
 
@@ -26,11 +29,11 @@ vivio.component(module)
 .render(h => h
   .div.class(font)
   .elRow.elRow()
-  .elRow.props({gutter: 10, justify: 'center', type: 'flex'})
-    .elCol.props({span: 4})
+  .elRow.props({gutter: 20, justify: 'center', type: 'flex'})
+    .elCol.props({span: 5})
       .sideBar.sideBar()
     .elCol()
-    .elCol.props({span: 12})
+    .elCol.props({span: 13})
       .mainPanel.mainPanel()
     .elCol()
   .elRow()
