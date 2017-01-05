@@ -1,4 +1,5 @@
 import {BuiltinComponents} from 'vivio/dist/src/template/interface'
+import {Emitter} from 'vivio/dist/src/core/interface'
 
 declare module "vivio/dist/src/template/interface" {
     interface BuiltinComponents {
@@ -30,6 +31,9 @@ declare module "vivio/dist/src/template/interface" {
             icon?: string
             size?: 'large' | 'small' | 'mini'
           },
+          $emit: Emitter<{
+            input: string
+          }>
           $slots: {
             append: any[]
           }

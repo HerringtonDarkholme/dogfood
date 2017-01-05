@@ -1,6 +1,6 @@
 import vivio from 'vivio'
 import {style} from 'typestyle'
-import {mapGetters} from './helper'
+import {mapGetters, mapMutations} from './helper'
 
 const DURATION = '0.39s'
 
@@ -43,16 +43,19 @@ const TYPES = ['primary', 'gray', 'success', 'warning', 'danger']
 
 export default
 vivio.component(module)
-.computed(mapGetters('currentItems', 'categories'))
+.computed(mapGetters('currentItems', 'categories', 'searchString'))
 .methods({
   tagType(cat: string) {
     let index = this.categories.indexOf(cat) % TYPES.length
     return TYPES[index]
-  }
+  },
 })
+.methods(mapMutations('changeSearch'))
 .render((h, vm) => h
   .div
-    .elInput.props({placeholder: 'Search', icon: 'search', size: 'large'})
+    .elInput
+      .props({placeholder: 'Search', icon: 'search', size: 'large', value: vm.searchString})
+      .on({input: vm.changeSearch})
     .elInput()
     .transitionGroup
     .for(vm.currentItems, (h, d) => h
