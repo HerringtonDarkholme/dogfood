@@ -5,4 +5,6 @@ Vue.use(ElementUI)
 Vue.component('elCard', ElementUI.Card)
 
 import component from './components'
-vivio.start({component})
+import store from './store'
+
+vivio.start({component, store})

@@ -1,5 +1,6 @@
 import vivio from 'vivio'
 import {style} from 'typestyle'
+import {mapGetters} from './helper'
 
 const h1 = style({
   fontFamily: '"Droid Serif",Georgia,"Times New Roman",Times,serif',
@@ -10,14 +11,16 @@ const h1 = style({
 
 export default
 vivio.component(module)
-  .render(h => h
+  .computed(mapGetters('categories'))
+  .render((h, vm) => h
     .elMenu
       .h1.class(h1)
         .span.style({color: '#2aa198'}).$`Vue`.span()
         .$`Awesome`
       .h1()
-      .elMenuItem.props({index: '0'}).$`Official Resources`.elMenuItem()
-      .elMenuItem.props({index: '1'}).$`External Resources`.elMenuItem()
+      .for(vm.categories, (h, category, i) => h
+        .elMenuItem.props({index: '' + i}).$(category).elMenuItem()
+      )
     .elMenu()
   )
   .done()
