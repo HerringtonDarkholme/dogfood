@@ -43,14 +43,14 @@ const TYPES = ['primary', 'gray', 'success', 'warning', 'danger']
 
 export default
 vivio.component(module)
-.computed(mapGetters('currentItems', 'categories', 'searchString'))
+.computed(mapGetters('currentItems', 'categories', 'searchString', 'currentPage', 'totalCount'))
 .methods({
   tagType(cat: string) {
     let index = this.categories.indexOf(cat) % TYPES.length
     return TYPES[index]
   },
 })
-.methods(mapMutations('changeSearch'))
+.methods(mapMutations('changeSearch', 'changePage'))
 .render((h, vm) => h
   .div
     .elInput
@@ -73,6 +73,12 @@ vivio.component(module)
       .elRow()
     )
     .transitionGroup()
+    .elRow.props({justify: 'center', type: 'flex'})
+      .elPagination
+        .props({currentPage: vm.currentPage, total: vm.totalCount, layout: 'prev,pager,next,->'})
+        .on({'current-change'(n: number) { vm.changePage(n)}})
+      .elPagination()
+    .elRow()
   .div()
 )
 .done()

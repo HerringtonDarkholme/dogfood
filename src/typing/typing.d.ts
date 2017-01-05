@@ -59,5 +59,20 @@ declare module "vivio/dist/src/template/interface" {
             type: string
           }
         }
+        elPagination: {
+          props: {
+            small?: boolean
+            pageSize?: number
+            total?: number
+            pageCount?: number
+            currentPage: number
+            layout?: string
+            pageSizes?: number[]
+          }
+          $emit: Emitter<{
+            sizeChange?: number
+            'current-change'?: number
+          }>
+        }
     }
 }

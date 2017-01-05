@@ -18,7 +18,7 @@ const data = {
 }
 
 function getPage<T>(arr: T[], page: number) {
-  return arr.slice(PAGE_SIZE * page, PAGE_SIZE)
+  return arr.slice(PAGE_SIZE * page, PAGE_SIZE * (page + 1))
 }
 
 function search(source: string, pattern: string): boolean {
@@ -33,7 +33,7 @@ export default vivio.store(data)
       const duplicate = state.repos.map(repo => repo.category)
       return Array.from(new Set(duplicate))
     },
-    currentItems(state) {
+    filteredItem(state) {
       const pattern = state.searchString
       let repos = state.repos.filter(repo => {
         return search(repo.name, pattern) || repo.description && search(repo.description, pattern)
@@ -41,16 +41,30 @@ export default vivio.store(data)
       if (state.currentCategory !== ALL) {
         repos = repos.filter(repo => repo.category === state.currentCategory)
       }
-      return getPage(repos, state.currentPage)
+      return repos
     },
+    currentPage: s => s.currentPage + 1,
     searchString: s => s.searchString,
+  })
+  .getters({
+    totalCount(s, g) {
+      return g.filteredItem.length
+    },
+    currentItems(s, g) {
+      return getPage(g.filteredItem, s.currentPage)
+    }
   })
   .mutationsWithArg({
     changeCategory(state, category: string) {
       state.currentCategory = category
+      state.currentPage = 0
     },
     changeSearch(state, search: string) {
       state.searchString = search
-    }
+      state.currentPage = 0
+    },
+    changePage(state, page: number) {
+      state.currentPage = page - 1
+    },
   })
   .done()
