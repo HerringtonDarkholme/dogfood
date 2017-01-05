@@ -4,7 +4,20 @@ import mainPanel from './main-panel'
 import {style} from 'typestyle'
 
 const font = style({
-  fontFamily: '"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif'
+  fontFamily: '"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif',
+  $nest: {
+    a: {
+      paddingLeft: '0.5em',
+      textDecoration: 'none',
+      color: '#1F2D3D',
+      transition: 'color 0.3s',
+      $nest: {
+        '&:hover': {
+          color: '#58B7FF'
+        }
+      }
+    },
+  }
 })
 
 export default

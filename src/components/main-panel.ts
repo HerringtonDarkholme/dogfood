@@ -4,16 +4,13 @@ import {mapGetters} from './helper'
 
 const margin = style({
   margin: '10px 0',
+  cursor: 'pointer',
   $nest: {
-    a: {
-      paddingLeft: '0.5em',
-      textDecoration: 'none',
-      color: '#1F2D3D',
-      $nest: {
-        '&:hover': {
-          color: '#58B7FF'
-        }
-      }
+    '&:hover .el-card': {
+      boxShadow: '0 2px 6px 0 rgba(0,0,0,.24),0 0 8px 0 rgba(0,0,0,.08)',
+    },
+    '&:hover a': {
+      color: '#58B7FF'
     },
     '&.v-enter': {
       opacity: 0,
@@ -47,11 +44,12 @@ vivio.component(module)
     .transitionGroup
     .for(vm.currentItems, (h, d) => h
       .elRow.class(margin).key(d.name)
-        .elCard
-          .elTag
+        .elCard.nativeOn({click: () => window.open(d.link)})
+          .a.$(d.name).a()
+          .elTag.style({float: 'right'})
             .props({type: vm.tagType(d.category)})
-            .$(d.category).elTag()
-          .a.attrs({href: d.link, target: '_blank'}).$(d.name).a()
+            .$(d.category)
+          .elTag()
           .p.$(d.description || '').p()
         .elCard()
       .elRow()
