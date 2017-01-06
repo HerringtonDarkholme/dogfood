@@ -24,7 +24,7 @@ const font = style({
 })
 
 export default
-vivio.component(module)
+vivio.component()
 .components({sideBar, mainPanel})
 .render(h => h
   .div.class(font)
@@ -39,4 +39,4 @@ vivio.component(module)
   .elRow()
   .div()
 )
-.done()
+.done(module)

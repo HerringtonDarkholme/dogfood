@@ -10,7 +10,7 @@ const h1 = style({
 
 
 export default
-vivio.component(module)
+vivio.component()
   .computed(mapGetters('categories'))
   .methods(mapMutations('changeCategory'))
   .render((h, vm) => h
@@ -25,4 +25,4 @@ vivio.component(module)
       )
     .elMenu()
   )
-  .done()
+  .done(module)

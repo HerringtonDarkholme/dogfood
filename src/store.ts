@@ -59,6 +59,7 @@ export default vivio.store(data)
       state.currentPage = 0
     },
     changeSearch(state, search: string) {
+      console.log(112)
       state.searchString = search
       state.currentPage = 0
     },
@@ -66,4 +67,4 @@ export default vivio.store(data)
       state.currentPage = page - 1
     },
   })
-  .done()
+  .done(module)
