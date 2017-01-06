@@ -29,7 +29,6 @@ function search(source: string, pattern: string): boolean {
 export default vivio.store(data)
   .getters({
     categories(state) {
-      console.log(state)
       const duplicate = state.repos.map(repo => repo.category)
       return Array.from(new Set(duplicate))
     },
