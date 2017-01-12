@@ -18,7 +18,7 @@ function menuItem(h: any, category: string, index: number) {
 }
 
 export default
-vivio.component(module)
+vivio.component()
   .computed(mapGetters('categories'))
   .methods(mapMutations('changeCategory'))
   .render((h, vm) => h
@@ -31,4 +31,4 @@ vivio.component(module)
       .for(vm.categories, menuItem.bind(vm))
     .elMenu()
   )
-  .done()
+  .done(module)

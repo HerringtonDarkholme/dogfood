@@ -29,7 +29,6 @@ function search(source: string, pattern: string): boolean {
 export default vivio.store(data)
   .getters({
     categories(state) {
-      console.log(state)
       const duplicate = state.repos.map(repo => repo.category)
       return Array.from(new Set(duplicate))
     },
@@ -60,6 +59,7 @@ export default vivio.store(data)
       state.currentPage = 0
     },
     changeSearch(state, search: string) {
+      console.log(112)
       state.searchString = search
       state.currentPage = 0
     },
@@ -67,4 +67,4 @@ export default vivio.store(data)
       state.currentPage = page - 1
     },
   })
-  .done()
+  .done(module)

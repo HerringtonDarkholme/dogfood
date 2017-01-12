@@ -42,7 +42,7 @@ const margin = style({
 const TYPES = ['primary', 'gray', 'success', 'warning', 'danger']
 
 export default
-vivio.component(module)
+vivio.component()
 .computed(mapGetters('currentItems', 'categories', 'searchString', 'currentPage', 'totalCount'))
 .methods({
   tagType(cat: string) {
@@ -81,4 +81,4 @@ vivio.component(module)
     .elRow()
   .div()
 )
-.done()
+.done(module)
