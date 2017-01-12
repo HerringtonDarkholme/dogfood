@@ -8,6 +8,14 @@ const h1 = style({
   fontSize: 30
 })
 
+function menuItem(h: any, category: string, index: number) {
+  const vm = this
+  return html()
+    .elMenuItem.props({index: '' + index})
+      .nativeOn({click: () => vm.changeCategory(category)})
+      .$(category)
+    .elMenuItem()
+}
 
 export default
 vivio.component(module)
@@ -19,10 +27,8 @@ vivio.component(module)
         .span.style({color: '#2aa198', marginRight: '-0.2em'}).$`Vue`.span()
         .$` Awesome`
       .h1()
-      .elMenuItem.props({index: '-1'}).nativeOn({click: () => vm.changeCategory('All')}).$`All`.elMenuItem()
-      .for(vm.categories, (h, category, index) => h
-        .elMenuItem.props({index: '' + index}).nativeOn({click: () => vm.changeCategory(category)}).$(category).elMenuItem()
-      )
+      .children(menuItem.bind(vm)(h, 'All', -1))
+      .for(vm.categories, menuItem.bind(vm))
     .elMenu()
   )
   .done()
